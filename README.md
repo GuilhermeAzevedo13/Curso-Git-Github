@@ -4,19 +4,61 @@ Este checklist é um guia prático baseado no seu material de estudo. A ideia é
 
 ---
 
-## 📚 Cheat Sheet: Padrões Adotados
-*Consulte aqui antes de fazer as tarefas.*
+# 📚 Cheat Sheet: Guia de Bolso do Git
 
-### 🏷️ Tipos de Commit (Semantic Commits)
-| Tipo | Quando usar | Exemplo |
+## 🛠️ Comandos Essenciais (Dia a Dia)
+| Comando | O que faz? | Quando usar? |
 | :--- | :--- | :--- |
-| **feat** | Nova funcionalidade para o usuário. | `feat: add login button` |
-| **fix** | Correção de bug. | `fix: resolve validation error` |
-| **docs** | Alteração apenas na documentação. | `docs: update readme instructions` |
-| **style** | Formatação, pontos e vírgulas (sem mudar lógica). | `style: format css indentation` |
-| **refactor** | Melhoria de código que não muda a funcionalidade. | `refactor: simplify auth logic` |
-| **chore** | Atualização de tarefas de build, configs, ferramentas. | `chore: update npm packages` |
-| **test** | Adição ou correção de testes. | `test: add unit test for user service` |
+| `git status` | Mostra o estado dos arquivos (modificados, novos, etc). | Sempre. Antes de qualquer comando. |
+| `git add .` | Prepara **todos** os arquivos modificados para o commit. | Quando terminar uma etapa de trabalho. |
+| `git add arquivo.txt` | Prepara apenas **um** arquivo específico. | Quando quiser separar mudanças em commits diferentes. |
+| `git commit -m "msg"` | Salva as mudanças preparadas com uma mensagem. | Para registrar a evolução do código. |
+| `git commit -am "msg"` | Atalho: Faz o `add` (em arquivos já rastreados) e `commit` de uma vez. | Para agilizar mudanças simples em arquivos existentes. |
+| `git push origin branch` | Envia seus commits locais para o GitHub (nuvem). | Para salvar seu trabalho online ou compartilhar. |
+| `git pull` | Baixa e aplica as novidades do GitHub no seu PC. | Sempre antes de começar a trabalhar (para atualizar). |
+| `git log --oneline` | Mostra o histórico resumido (Hash + Mensagem). | Para ver o ID dos commits rapidamente. |
+
+## 🌿 Branches e Navegação
+| Comando | O que faz? |
+| :--- | :--- |
+| `git checkout -b nome` | **Cria** uma nova branch e já **entra** nela. |
+| `git checkout nome` | **Troca** para uma branch existente. |
+| `git branch` | Lista todas as branches locais. |
+| `git branch -d nome` | Deleta uma branch (só funciona se já tiver feito merge). |
+| `git merge nome` | Funde a branch `nome` na branch onde você está agora. |
+
+## 🚑 Emergência e Correção (O "Ctrl+Z")
+| Comando | O que faz? | Cenário de uso |
+| :--- | :--- | :--- |
+| `git checkout -- arquivo` | Desfaz alterações não salvas num arquivo. | "Editei errado e quero voltar como estava antes". |
+| `git rm --cached arquivo` | Tira o arquivo do commit (stage) mas **mantém** no PC. | "Adicionei o `.env` sem querer no `git add`". |
+| `git commit --amend` | Adiciona mudanças ao **último** commit ou muda a mensagem. | "Esqueci de incluir um arquivo no último commit". |
+| `git reset --soft HEAD~1` | Desfaz o último commit, mas **mantém** seus arquivos prontos para commitar de novo. | "A mensagem ficou ruim" ou "Faltou algo". |
+| `git reset --hard HEAD~1` | **PERIGO:** Apaga o último commit e **destrói** as alterações. | "Quero jogar fora tudo o que fiz no último commit". |
+| `git revert ID_COMMIT` | Cria um commit novo que faz o inverso do commit escolhido. | "O commit antigo quebrou o sistema, preciso anular ele". |
+
+## 🚀 Comandos Avançados (Nível Pro)
+| Comando | O que faz? |
+| :--- | :--- |
+| `git stash` | Guarda alterações "na gaveta" (memória temporária) e limpa o código. |
+| `git stash pop` | Tira as alterações da gaveta e aplica de volta. |
+| `git cherry-pick ID` | Copia um commit específico de outra branch para a sua. |
+| `git rebase -i HEAD~3` | Abre uma "máquina do tempo" para editar/renomear os últimos 3 commits. |
+
+---
+
+## 🏷️ Padrão de Semantic Commits (Boas Práticas)
+*Use esses prefixos para deixar o histórico organizado.*
+
+| Tipo | Significado | Exemplo |
+| :--- | :--- | :--- |
+| **feat:** | Nova funcionalidade para o usuário. | `feat: adiciona botão de login` |
+| **fix:** | Correção de bugs. | `fix: corrige erro de validação` |
+| **docs:** | Mudança apenas na documentação. | `docs: atualiza readme` |
+| **style:** | Formatação (espaços, ponto e vírgula). Não muda lógica. | `style: identação do css` |
+| **refactor:** | Melhoria de código (performance/limpeza) sem mudar função. | `refactor: simplifica função de soma` |
+| **test:** | Adição ou correção de testes. | `test: adiciona teste unitário` |
+| **chore:** | Tarefas de manutenção (build, configs, pacotes). | `chore: atualiza versão do node` |
 
 ### 🌿 Nomes de Branches (Git Flow)
 | Branch | Padrão de Nome | Finalidade |
