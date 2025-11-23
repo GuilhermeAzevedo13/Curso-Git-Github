@@ -2,6 +2,10 @@
 
 Este checklist foi desenhado para praticar o fluxo de trabalho real de um desenvolvedor, desde a configuração inicial até a colaboração via Pull Requests.
 
+Faça o commit dessa mudança: git commit -am "Progress: Tarefa 01 concluída".
+
+Repita para a próxima.
+
 ---
 
 ## 🟦 Módulo 1: Setup e Primeiros Passos
