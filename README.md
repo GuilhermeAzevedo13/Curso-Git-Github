@@ -36,6 +36,8 @@ Este checklist é um guia prático baseado no seu material de estudo. A ideia é
     - Mensagem: `git commit -m "chore: create gitignore file"`
 - [ ] **Tarefa 05:** Conecte ao GitHub (caso tenha criado o repo localmente primeiro): `git remote add origin URL_DO_SEU_REPO`.
 - [ ] **Tarefa 06:** Verifique se tudo está certo: `git config --list`.
+- [ ] **Tarefa 07:** Essa parte é **OPCIONAL** caso nao prefira a Tarefa 05 -> Realize o Fork desse repositório para o seu GitHub
+- [ ] **Tarefa 08:** Pegue a URL SSH desse repositório para clonar em sua máquina local e digite no terminal de sua máquina: `git clone URL_SSH_DO_SEU_REPO`
 
 ---
 
