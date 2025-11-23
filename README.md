@@ -4,14 +4,38 @@ Este checklist é um guia prático baseado no seu material de estudo. A ideia é
 
 ---
 
+## 📚 Cheat Sheet: Padrões Adotados
+*Consulte aqui antes de fazer as tarefas.*
+
+### 🏷️ Tipos de Commit (Semantic Commits)
+| Tipo | Quando usar | Exemplo |
+| :--- | :--- | :--- |
+| **feat** | Nova funcionalidade para o usuário. | `feat: add login button` |
+| **fix** | Correção de bug. | `fix: resolve validation error` |
+| **docs** | Alteração apenas na documentação. | `docs: update readme instructions` |
+| **style** | Formatação, pontos e vírgulas (sem mudar lógica). | `style: format css indentation` |
+| **refactor** | Melhoria de código que não muda a funcionalidade. | `refactor: simplify auth logic` |
+| **chore** | Atualização de tarefas de build, configs, ferramentas. | `chore: update npm packages` |
+| **test** | Adição ou correção de testes. | `test: add unit test for user service` |
+
+### 🌿 Nomes de Branches (Git Flow)
+| Branch | Padrão de Nome | Finalidade |
+| :--- | :--- | :--- |
+| **Feature** | `feature/nome-da-feature` | Desenvolver algo novo. Sai da `develop`. |
+| **Hotfix** | `hotfix/nome-do-erro` | Correção urgente. Sai da `main`. |
+| **Release** | `release/v1.0.0` | Preparação para versão final. |
+
+---
+
 ## 🟦 Nível 1: Setup e Configuração Inicial
 *Comandos: config, init, remote*
 
 - [ ] **Tarefa 01:** Configure seu nome: `git config --global user.name "Seu Nome"`.
 - [ ] **Tarefa 02:** Configure seu e-mail: `git config --global user.email "seu@email.com"`.
-- [ ] **Tarefa 03:** Inicie o repositório (se ainda não fez): `git init`.
-- [ ] **Tarefa 04:** Conecte ao GitHub (caso tenha criado o repo localmente primeiro): `git remote add origin URL_DO_SEU_REPO`.
-- [ ] **Tarefa 05:** Verifique se tudo está certo: `git config --list`.
+- [ ] **Tarefa 04 (Commit Chore):** Crie um arquivo `.gitignore` (pode deixar vazio por enquanto). Faça o commit usando o padrão:
+    - Mensagem: `git commit -m "chore: create gitignore file"`
+- [ ] **Tarefa 05:** Conecte ao GitHub (caso tenha criado o repo localmente primeiro): `git remote add origin URL_DO_SEU_REPO`.
+- [ ] **Tarefa 06:** Verifique se tudo está certo: `git config --list`.
 
 ---
 
@@ -19,12 +43,13 @@ Este checklist é um guia prático baseado no seu material de estudo. A ideia é
 *Comandos: checkout -b, add, commit, push, status*
 
 - [ ] **Tarefa 06 (Padrão Git Flow):** Crie antes uma branch e já entre nela com nome `develop` usando o comando `git checkout -b develop` e suba essa nova branch para o seu GitHub com `git push -u origin develop`.
-- [ ] **Tarefa 07:** Crie um arquivo `index.html`. Rode `git status` para vê-lo como "Untracked".
-- [ ] **Tarefa 08:** Adicione apenas este arquivo: `git add index.html`.
-- [ ] **Tarefa 09:** Faça o commit: `git commit -m "Feat: Cria index.html"`.
-- [ ] **Tarefa 10:** Modifique o `index.html` (adicione qualquer texto).
-- [ ] **Tarefa 11:** Use o comando "combo" para adicionar e comitar de uma vez: `git commit -am "Update: Atualiza index via combo"`.
-- [ ] **Tarefa 12:** Envie as alterações da develop para o GitHub: `git push`.
+- [ ] **Tarefa 07:** Crie outra branch dentro da branch `develop` com o nome feature/criar-index
+- [ ] **Tarefa 08:** Crie um arquivo `index.html`. Rode `git status` para vê-lo como "Untracked".
+- [ ] **Tarefa 09:** Adicione apenas este arquivo: `git add index.html`.
+- [ ] **Tarefa 10:** Faça o commit: `git commit -m "Feat: Cria index.html"`.
+- [ ] **Tarefa 11:** Modifique o `index.html` (adicione qualquer texto).
+- [ ] **Tarefa 12:** Use o comando "combo" para adicionar e comitar de uma vez: `git commit -am "Update: Atualiza index via combo"`.
+- [ ] **Tarefa 13:** Envie as alterações da develop para o GitHub: `git push origin feature/criar-index`.
 
 ---
 
@@ -58,9 +83,37 @@ Este checklist é um guia prático baseado no seu material de estudo. A ideia é
 
 - [ ] **Tarefa 24 (Nova Branch):** Crie e entre numa branch a partir da develop: `git checkout -b feature-teste`.
 - [ ] **Tarefa 25:** Crie um arquivo `teste.txt` e faça commit na branch `feature-teste`.
-- [ ] **Tarefa 26 (Cherry-Pick):** Volte para a `develop`. Copie o commit que você fez na outra branch e traga para cá sem fazer merge completo: `git cherry-pick ID_DO_COMMIT`.
+- [ ] **Tarefa 26 (Cherry-Pick):** Volte para a `develop`. Copie o commit que você fez na outra branch e traga para cá sem fazer merge completo: `git cherry-pick ID_DO_COMMIT`, DICA: Use `git log` .
 - [ ] **Tarefa 27 (Rebase Interativo):** Vamos renomear um commit antigo. Rode `git rebase -i HEAD~3`.
+      OBS.:  **rebase**: "Reescrever a base" ou o histórico.
+            **-i (interactive)**: Modo interativo: Ele vai abrir um editor de texto para perguntar o que você quer fazer com cada commit;
+             **HEAD~3**: Significa "pegue os últimos 3 commits a partir de agora", 
 - [ ] **Tarefa 28:** No editor que abrir, troque a palavra `pick` por `reword` no commit que deseja alterar, salve, e digite a nova mensagem.
+      OBS.: Por padrão, todos vêm como pick.
+            - pick: Significa "Mantenha esse commit exatamente como ele é".
+            - reword: Significa "Mantenha o código, mas deixe-me reescrever a mensagem desse commit".
+            - drop: Significa "Apague esse commit e o código dele da existência".
+            - squash: Significa "Funda esse commit com o anterior" (juntar dois em um).
+      O Git vai abrir o editor novamente, mas agora mostrando apenas a mensagem daquele commit que você marcou como reword.
+      Apague o texto antigo ("fix: arruma botao torto") e escreva o novo ("fix: arrumar dois botoes tortos").
+
+      ⚠️ CUIDADO COM O REBASE
+      Nunca faça rebase em commits que você já subiu para o GitHub (push) e que outras pessoas estão usando. Mudar o histórico de uma branch compartilhada (como a develop ou main) quebra o código dos colegas. Use o rebase livremente apenas nas suas branches de feature locais ou antes de dar o push.
+---
+
+## 🟧 Nível Extra: Hotfix (Correção Urgente) -- (OPCIONAL)
+*Foco: Simular um erro em produção (main).*
+
+- [ ] **Tarefa 29 (Troca de Contexto):** Volte para a branch `main`: `git checkout main`.
+- [ ] **Tarefa 30 (Simulação):** Suponha que acharam um erro crítico. Crie uma branch de hotfix a partir da main:
+    - Comando: `git checkout -b hotfix/fix-critical-README`
+- [ ] **Tarefa 31 (Correção):** Crie/Edite um arquivo `README.md` corrigindo o "erro" que seria marcar um X nas tarefas que vc ja realizou.
+- [ ] **Tarefa 32 (Commit Fix):** Comite a correção:
+    - Mensagem: `fix: adicionado X nos topicos da Tarefa Y que realizei`
+- [ ] **Tarefa 33 (Merge):** Volte para a main e faça o merge do hotfix.
+    - `git checkout main`
+    - `git merge hotfix/fix-critical-header`
+    - (Opcional) Delete a branch: `git branch -d hotfix/fix-critical-header`
 
 ---
 
