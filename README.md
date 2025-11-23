@@ -14,8 +14,8 @@ Este checklist é um guia prático baseado no seu material de estudo. A ideia é
 | `git add arquivo.txt` | Prepara apenas **um** arquivo específico. | Quando quiser separar mudanças em commits diferentes. |
 | `git commit -m "msg"` | Salva as mudanças preparadas com uma mensagem. | Para registrar a evolução do código. |
 | `git commit -am "msg"` | Atalho: Faz o `add` (em arquivos já rastreados) e `commit` de uma vez. | Para agilizar mudanças simples em arquivos existentes. |
-| `git push origin branch` | Envia seus commits locais para o GitHub (nuvem). | Para salvar seu trabalho online ou compartilhar. |
-| `git pull` | Baixa e aplica as novidades do GitHub no seu PC. | Sempre antes de começar a trabalhar (para atualizar). |
+| `git push origin nome_da_branch` | Envia seus commits locais para o GitHub (nuvem). | Para salvar seu trabalho online ou compartilhar. |
+| `git pull origin nome_da_branch` | Baixa e aplica as novidades do GitHub no seu PC. | Sempre antes de começar a trabalhar (para atualizar). |
 | `git log --oneline` | Mostra o histórico resumido (Hash + Mensagem). | Para ver o ID dos commits rapidamente. |
 
 ## 🌿 Branches e Navegação
@@ -24,8 +24,9 @@ Este checklist é um guia prático baseado no seu material de estudo. A ideia é
 | `git checkout -b nome` | **Cria** uma nova branch e já **entra** nela. |
 | `git checkout nome` | **Troca** para uma branch existente. |
 | `git branch` | Lista todas as branches locais. |
-| `git branch -d nome` | Deleta uma branch (só funciona se já tiver feito merge). |
-| `git merge nome` | Funde a branch `nome` na branch onde você está agora. |
+| `git branch -d nome` | Deleta uma branch de forma segura (só funciona se já tiver feito merge). |
+| `git branch -D nome` | Força a deleção (apaga mesmo sem merge). Cuidado! |
+| `git merge nome_da_branch` | Funde a branch `nome_da_branch` na branch onde você está agora. |
 
 ## 🚑 Emergência e Correção (O "Ctrl+Z")
 | Comando | O que faz? | Cenário de uso |
