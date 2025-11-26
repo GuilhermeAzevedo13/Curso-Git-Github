@@ -124,44 +124,5 @@ Este checklist é um guia prático baseado no seu material de estudo. A ideia é
 
 ---
 
-## 🟥 Nível 5: Branches e Manipulação de Histórico
-*Comandos: branch, checkout, merge, rebase, cherry-pick*
-
-- [ ] **Tarefa 28 (Nova Branch):** Crie e entre numa branch a partir da develop: `git checkout -b feature-teste`.
-- [ ] **Tarefa 29:** Crie um arquivo `teste.txt` e faça commit na branch `feature-teste`.
-- [ ] **Tarefa 30 (Cherry-Pick):** Volte para a `develop`. Copie o commit que você fez na outra branch e traga para cá sem fazer merge completo: `git cherry-pick ID_DO_COMMIT`, DICA: Use `git log` .
-- [ ] **Tarefa 31 (Rebase Interativo):** Vamos renomear um commit antigo. Rode `git rebase -i HEAD~3`.
-      OBS.:  **rebase**: "Reescrever a base" ou o histórico.
-            **-i (interactive)**: Modo interativo: Ele vai abrir um editor de texto para perguntar o que você quer fazer com cada commit;
-             **HEAD~3**: Significa "pegue os últimos 3 commits a partir de agora", 
-- [ ] **Tarefa 32:** No editor que abrir, troque a palavra `pick` por `reword` no commit que deseja alterar, salve, e digite a nova mensagem.
-      OBS.: Por padrão, todos vêm como pick.
-            - pick: Significa "Mantenha esse commit exatamente como ele é".
-            - reword: Significa "Mantenha o código, mas deixe-me reescrever a mensagem desse commit".
-            - drop: Significa "Apague esse commit e o código dele da existência".
-            - squash: Significa "Funda esse commit com o anterior" (juntar dois em um).
-      O Git vai abrir o editor novamente, mas agora mostrando apenas a mensagem daquele commit que você marcou como reword.
-      Apague o texto antigo ("fix: arruma botao torto") e escreva o novo ("fix: arrumar dois botoes tortos").
-
-      ⚠️ CUIDADO COM O REBASE
-      Nunca faça rebase em commits que você já subiu para o GitHub (push) e que outras pessoas estão usando. Mudar o histórico de uma branch compartilhada (como a develop ou main) quebra o código dos colegas. Use o rebase livremente apenas nas suas branches de feature locais ou antes de dar o push.
----
-
-## 🟧 Nível Extra: Hotfix (Correção Urgente) -- (OPCIONAL)
-*Foco: Simular um erro em produção (main).*
-
-- [ ] **Tarefa 33 (Troca de Contexto):** Volte para a branch `main`: `git checkout main`.
-- [ ] **Tarefa 34 (Simulação):** Suponha que acharam um erro crítico. Crie uma branch de hotfix a partir da main:
-    - Comando: `git checkout -b hotfix/fix-critical-README`
-- [ ] **Tarefa 35 (Correção):** Crie/Edite um arquivo `README.md` corrigindo o "erro" que seria marcar um X nas tarefas que vc ja realizou.
-- [ ] **Tarefa 36 (Commit Fix):** Comite a correção:
-    - Mensagem: `fix: adicionado X nos topicos da Tarefa Y que realizei`
-- [ ] **Tarefa 37 (Merge):** Volte para a main e faça o merge do hotfix.
-    - `git checkout main`
-    - `git merge hotfix/fix-critical-header`
-    - (Opcional) Delete a branch: `git branch -d hotfix/fix-critical-header`
-
----
-
 ### 🏆 Missão Cumprida!
 Se você chegou até aqui, você praticou os comandos essenciais listados no seu guia, incluindo instalação, fluxo básico, correções de erros e manipulação avançada de histórico.
