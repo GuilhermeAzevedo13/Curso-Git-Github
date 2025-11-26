@@ -3,6 +3,8 @@
 Este checklist é um guia prático baseado no seu material de estudo. A ideia é executar o comando no terminal e marcar o checkbox aqui.
 
 Notion .: https://malleable-end-792.notion.site/Guia-Git-e-GitHub-1804c1879a80807b8655c599f413e46f
+
+YouTube.: https://www.youtube.com/watch?v=0ElUJ9fjrH0
 ---
 
 # 📚 Cheat Sheet: Guia de Bolso do Git
